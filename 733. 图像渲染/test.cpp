@@ -14,7 +14,7 @@ public:
         q.push({ sr,sc });
         while (!q.empty())
         {
-            auto& [row, col] = q.front();
+            auto [row, col] = q.front();
             q.pop();
             image[row][col] = color;
             for (int i = 0; i < 4; ++i)
