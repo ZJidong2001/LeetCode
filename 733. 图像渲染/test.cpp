@@ -11,16 +11,20 @@ public:
         int origin_color = image[sr][sc];
 
         queue<PII> q;
-        q.push({ sr,sc });
+        q.push({ sr, sc });
+        image[sr][sc] = color;
         while (!q.empty())
         {
             auto [row, col] = q.front();
             q.pop();
-            image[row][col] = color;
             for (int i = 0; i < 4; ++i)
             {
                 int x = row + dr[i], y = col + dc[i];
-                if (x >= 0 && x <= image.size() - 1 && y >= 0 && y <= image[0].size() - 1 && image[x][y] == origin_color) q.push({ x,y });
+                if (x >= 0 && x <= image.size() - 1 && y >= 0 && y <= image[0].size() - 1 && image[x][y] == origin_color)
+                {
+                    q.push({ x, y });
+                    image[x][y] = color;
+                }
             }
         }
 
